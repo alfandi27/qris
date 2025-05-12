@@ -375,15 +375,15 @@ body {
         }
 
         .modal-content {
-            background-color: white;
-            border-radius: 16px;
-            max-width: 350px;
-            width: 100%;
-            padding: 24px;
-            transform: scale(0.95);
-            opacity: 0;
-            transition: all 0.3s;
-        }
+    background-color: white;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 100%;
+    padding: 24px;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.3s;
+}
 
         .modal-header {
             display: flex;
@@ -416,13 +416,14 @@ body {
         }
 
         .modal-qr {
-            margin: 0 auto 20px;
-            background-color: white;
-            padding: 16px;
-            border: 2px solid var(--border-qr);
-            border-radius: 12px;
-            width: fit-content;
-        }
+    margin: 0 auto 20px;
+    background-color: white;
+    padding: 16px;
+    border: 2px solid var(--border-qr);
+    border-radius: 12px;
+    width: fit-content;
+    max-width: 100%;
+}
 
         .modal-info {
             font-size: 12px;
