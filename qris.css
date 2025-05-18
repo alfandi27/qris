@@ -135,16 +135,18 @@ body {
             color: var(--text-muted);
         }
 
-        /* QR Section */
+        /* QR Section - DIPERBARUI */
         .qr-section {
             display: flex;
+            flex-direction: row;
             align-items: flex-start;
             margin-bottom: 24px;
+            gap: 16px;
         }
 
         .qr-info {
-            width: 50%;
-            padding-right: 16px;
+            flex: 1;
+            min-width: 0;
         }
 
         .qr-title {
@@ -183,9 +185,9 @@ body {
         }
 
         .qr-container {
-            width: 50%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
+            align-items: center;
         }
 
         .qr-code {
@@ -195,11 +197,21 @@ body {
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .qr-code:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* QR code image styling */
+        .qr-code img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Details Accordion */
@@ -358,7 +370,7 @@ body {
             text-decoration: underline;
         }
 
-        /* Modal */
+        /* Modal - DIPERBARUI */
         .modal {
             position: fixed;
             top: 0;
@@ -375,15 +387,15 @@ body {
         }
 
         .modal-content {
-    background-color: white;
-    border-radius: 16px;
-    max-width: 400px;
-    width: 100%;
-    padding: 24px;
-    transform: scale(0.95);
-    opacity: 0;
-    transition: all 0.3s;
-}
+            background-color: white;
+            border-radius: 16px;
+            max-width: 90%;
+            width: 360px;
+            padding: 24px;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.3s;
+        }
 
         .modal-header {
             display: flex;
@@ -416,14 +428,23 @@ body {
         }
 
         .modal-qr {
-    margin: 0 auto 20px;
-    background-color: white;
-    padding: 16px;
-    border: 2px solid var(--border-qr);
-    border-radius: 12px;
-    width: fit-content;
-    max-width: 100%;
-}
+            margin: 0 auto 20px;
+            background-color: white;
+            padding: 12px;
+            border: 2px solid var(--border-qr);
+            border-radius: 12px;
+            width: fit-content;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* QR code image in modal */
+        .modal-qr img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
         .modal-info {
             font-size: 12px;
@@ -557,9 +578,73 @@ body {
             margin-right: 8px;
         }
 
-        /* Responsive */
+        /* Responsive Styles - DIPERBARUI */
         @media (max-width: 480px) {
             .main-container {
-                padding: 16px;
+                padding: 15px;
+            }
+            
+            .main-card {
+                padding: 20px;
+            }
+            
+            .qr-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .qr-info {
+                width: 100%;
+                text-align: center;
+                padding-right: 0;
+            }
+            
+            .qr-container {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .amount-value {
+                font-size: 24px;
+            }
+            
+            .modal-content {
+                width: 100%;
+                max-width: 320px;
+                padding: 20px;
+            }
+            
+            .modal-qr {
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .main-card {
+                padding: 15px;
+            }
+            
+            .btn {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .qr-code {
+                max-width: 100%;
+                padding: 6px;
+            }
+            
+            .modal-content {
+                padding: 15px;
+            }
+            
+            .modal-qr {
+                padding: 6px;
+            }
+            
+            .brand-title {
+                font-size: 18px;
             }
         }
