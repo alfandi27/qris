@@ -1,28 +1,4 @@
- document.getElementById('detailsHeader').addEventListener('click', function() {
-        const content = document.getElementById('detailsContent');
-        const icon = document.getElementById('toggleIcon');
-        
-        icon.classList.toggle('active');
-        
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-        }
-    });
-
-function closeModalFunction() {
-        modalContent.style.transform = 'scale(0.95)';
-        modalContent.style.opacity = '0';
-        
-        setTimeout(() => {
-            qrModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 300);
-    }
-
-    closeModal.addEventListener('click', closeModalFunction);
-
+ 
 // Countdown function
     function startCountdown(expiredDate) {
         const countDownDate = new Date(expiredDate).getTime();        
