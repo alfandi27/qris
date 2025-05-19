@@ -1,27 +1,3 @@
- window.addEventListener('load', function() {
-        setTimeout(() => {
-            document.getElementById('loadingOverlay').style.opacity = '0';
-            document.getElementById('mainContainer').style.opacity = '1';
-            
-            setTimeout(() => {
-                document.getElementById('loadingOverlay').style.display = 'none';
-            }, 700);
-        }, 1500);
-    });
-
-    
-    document.getElementById('detailsHeader').addEventListener('click', function() {
-        const content = document.getElementById('detailsContent');
-        const icon = document.getElementById('toggleIcon');
-        
-        icon.classList.toggle('active');
-        
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-        }
-    });
 
 function debounce(func, wait) {
     let timeout;
