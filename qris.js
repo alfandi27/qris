@@ -1,3 +1,8 @@
+const qrContainer = document.getElementById('qrcodeContainer');
+    const qrModal = document.getElementById('qrModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+
 function closeModalFunction() {
         modalContent.style.transform = 'scale(0.95)';
         modalContent.style.opacity = '0';
