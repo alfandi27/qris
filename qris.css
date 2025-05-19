@@ -1,656 +1,652 @@
- * {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background-color: var(--bg-main);
-            min-height: 100vh;
-            padding: 20px 0;
-        }
-
-        #loadingOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.7s;
-        }
-
-        .loader {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
-
-        .loader-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
-
-        .loader-ring-bg {
-            border: 4px solid rgba(13, 110, 253, 0.2);
-        }
-
-        .loader-ring-fill {
-            border-top: 4px solid var(--primary);
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Main Container */
-        .main-container {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.7s;
-        }
-
-        /* Header */
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .brand-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .brand-title span {
-            color: var(--primary);
-        }
-
-        .status-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            background-color: var(--bg-muted);
-            color: var(--text-muted);
-        }
-
-        .status-badge.success {
-            background-color: var(--success-bg);
-            color: var(--success-text);
-        }
-
-        .status-badge.danger {
-            background-color: var(--alert-bg);
-            color: var(--alert-text);
-        }
-
-        /* Main Card */
-        .main-card {
-            background-color: var(--bg-white);
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            padding: 25px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-        }
-
-        /* Payment Info */
-        .payment-info {
-            margin-bottom: 24px;
-        }
-
-        .amount-label {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-
-        .amount-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-right: 8px;
-        }
-
-        .currency-indicator {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* QR Section - DIPERBARUI */
-        .qr-section {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            margin-bottom: 24px;
-            gap: 16px;
-        }
-
-        .qr-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .qr-title {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .qr-subtitle {
-            font-size: 12px;
-            color: var(--text-icon);
-            margin-bottom: 16px;
-        }
-
-        .timer-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--bg-muted);
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .timer-badge i {
-            color: var(--text-icon);
-        }
-
-        .timer-badge.danger {
-            background-color: var(--alert-bg);
-        }
-
-        .timer-badge.danger span {
-            color: var(--alert-text);
-        }
-
-        .qr-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .qr-code {
-            background-color: white;
-            padding: 8px;
-            border: 2px solid var(--border-qr);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .qr-code:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        /* QR code image styling */
-        .qr-code img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Details Accordion */
-        .details-accordion {
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .details-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .details-header:hover {
-            background-color: var(--bg-muted);
-        }
-
-        .details-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .details-title i {
-            color: var(--primary);
-        }
-
-        .toggle-icon {
-            transition: transform 0.3s;
-            color: var(--text-icon);
-        }
-
-        .toggle-icon.active {
-            transform: rotate(180deg);
-        }
-
-        .details-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .details-list {
-            padding: 0 16px 16px;
-        }
-
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .detail-label {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .detail-value {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-primary);
-            background-color: var(--bg-muted);
-            padding: 6px 12px;
-            border-radius: 8px;
-        }
-
-        /* Buttons */
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn-primary:active {
-            transform: translateY(1px);
-        }
-
-        .btn-secondary {
-            background-color: var(--bg-white);
-            color: var(--text-primary);
-            border: 1px solid var(--border-light);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--bg-muted);
-        }
-
-        .btn-success {
-            background-color: var(--success-text);
-            color: white;
-        }
-
-        .btn-danger {
-            background-color: var(--alert-text);
-            color: white;
-        }
-
-        .btn-outline-danger {
-            background-color: transparent;
-            color: var(--alert-text);
-            border: 1px solid var(--alert-text);
-        }
-
-        .btn-outline-danger:hover {
-            background-color: var(--alert-bg);
-        }
-
-        .link-danger {
-            color: var(--alert-text);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .link-danger:hover {
-            text-decoration: underline;
-        }
-
-        /* Modal - DIPERBARUI */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 16px;
-            max-width: 90%;
-            width: 360px;
-            padding: 24px;
-            transform: scale(0.95);
-            opacity: 0;
-            transition: all 0.3s;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .close-button {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            border: none;
-            background-color: transparent;
-        }
-
-        .close-button:hover {
-            background-color: var(--bg-muted);
-        }
-
-        .modal-qr {
-            margin: 0 auto 20px;
-            background-color: white;
-            padding: 12px;
-            border: 2px solid var(--border-qr);
-            border-radius: 12px;
-            width: fit-content;
-            max-width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* QR code image in modal */
-        .modal-qr img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .modal-info {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        
-        .modal-amount {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin: 8px 0 12px;
-        }
-        
-        .modal-amount span {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-        
-        .modal-amount-value {
-            font-weight: 600;
-            color: var(--primary) !important;
-        }
-        
-        .modal-warning {
-            background-color: #fff8f1;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 6px;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        
-        .modal-warning i {
-            color: #f59e0b;
-            font-size: 12px;
-            margin-top: 2px;
-        }
-        
-        .modal-warning p {
-            font-size: 11px;
-            color: #713f12;
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        /* Overlay contents */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            z-index: 10;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
-
-        .status-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .status-icon.success {
-            background-color: var(--success-bg);
-        }
-
-        .status-icon.success i {
-            font-size: 32px;
-            color: var(--success-text);
-        }
-
-        .status-icon.danger {
-            background-color: var(--alert-bg);
-        }
-
-        .status-icon.danger i {
-            font-size: 32px;
-            color: var(--alert-text);
-        }
-
-        .status-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .status-message {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        /* Swal customization */
-        .swal2-popup {
-            border-radius: 16px !important;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-        }
-
-        .swal2-title {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            font-weight: 700 !important;
-        }
-
-        .swal2-html-container {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-        }
-
-        /* Spinner */
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s linear infinite;
-            margin-right: 8px;
-        }
-
-        /* Responsive Styles - DIPERBARUI */
-        @media (max-width: 480px) {
-            .main-container {
-                padding: 15px;
-            }
-            
-            .main-card {
-                padding: 20px;
-            }
-            
-            .qr-section {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .qr-info {
-                width: 100%;
-                text-align: center;
-                padding-right: 0;
-            }
-            
-            .qr-container {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .amount-value {
-                font-size: 24px;
-            }
-            
-            .modal-content {
-                width: 100%;
-                max-width: 320px;
-                padding: 20px;
-            }
-            
-            .modal-qr {
-                padding: 10px;
-                margin-bottom: 15px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .main-card {
-                padding: 15px;
-            }
-            
-            .btn {
-                padding: 12px;
-                font-size: 14px;
-            }
-            
-            .qr-code {
-                max-width: 100%;
-                padding: 6px;
-            }
-            
-            .modal-content {
-                padding: 15px;
-            }
-            
-            .modal-qr {
-                padding: 6px;
-            }
-            
-            .brand-title {
-                font-size: 18px;
-            }
-        }
+/* CSS Lengkap dengan Perbaikan QR Code */
+
+body {
+    background-color: var(--bg-main);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+/* Loading Overlay */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s;
+}
+
+.loader {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.loader-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.loader-ring-bg {
+    border: 4px solid rgba(13, 110, 253, 0.2);
+}
+
+.loader-ring-fill {
+    border-top: 4px solid var(--primary);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Main Container */
+.main-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+/* Header */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.brand-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.brand-title span {
+    color: var(--primary);
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: var(--bg-muted);
+    color: var(--text-muted);
+}
+
+.status-badge.success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.status-badge.danger {
+    background-color: var(--alert-bg);
+    color: var(--alert-text);
+}
+
+/* Main Card */
+.main-card {
+    background-color: var(--bg-white);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* Payment Info */
+.payment-info {
+    margin-bottom: 24px;
+}
+
+.amount-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.amount-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-right: 8px;
+}
+
+.currency-indicator {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* QR Section - DIPERBARUI */
+.qr-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.qr-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.qr-title {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.qr-subtitle {
+    font-size: 12px;
+    color: var(--text-icon);
+    margin-bottom: 16px;
+}
+
+.timer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-muted);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.timer-badge i {
+    color: var(--text-icon);
+}
+
+.timer-badge.danger {
+    background-color: var(--alert-bg);
+}
+
+.timer-badge.danger span {
+    color: var(--alert-text);
+}
+
+.qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-code {
+    background-color: white;
+    padding: 8px;
+    border: 2px solid var(--border-qr);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* QR code image styling - DIPERBARUI */
+.qr-code img {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+}
+
+/* Details Accordion */
+.details-accordion {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.details-header:hover {
+    background-color: var(--bg-muted);
+}
+
+.details-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.details-title i {
+    color: var(--primary);
+}
+
+.toggle-icon {
+    transition: transform 0.3s;
+    color: var(--text-icon);
+}
+
+.toggle-icon.active {
+    transform: rotate(180deg);
+}
+
+.details-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.details-list {
+    padding: 0 16px 16px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.detail-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background-color: var(--bg-muted);
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-secondary {
+    background-color: var(--bg-white);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-muted);
+}
+
+.btn-success {
+    background-color: var(--success-text);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--alert-text);
+    color: white;
+}
+
+.btn-outline-danger {
+    background-color: transparent;
+    color: var(--alert-text);
+    border: 1px solid var(--alert-text);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--alert-bg);
+}
+
+.link-danger {
+    color: var(--alert-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.link-danger:hover {
+    text-decoration: underline;
+}
+
+/* Modal - DIPERBARUI */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 16px;
+    max-width: 90%;
+    width: 360px;
+    padding: 24px;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.close-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    background-color: transparent;
+}
+
+.close-button:hover {
+    background-color: var(--bg-muted);
+}
+
+.modal-qr {
+    margin: 0 auto 20px;
+    background-color: white;
+    padding: 12px;
+    border: 2px solid var(--border-qr);
+    border-radius: 12px;
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* QR code image in modal - DIPERBARUI */
+.modal-qr img {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+}
+
+.modal-info {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.modal-amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 12px;
+}
+
+.modal-amount span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.modal-amount-value {
+    font-weight: 600;
+    color: var(--primary) !important;
+}
+
+.modal-warning {
+    background-color: #fff8f1;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.modal-warning i {
+    color: #f59e0b;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.modal-warning p {
+    font-size: 11px;
+    color: #713f12;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Overlay contents */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.status-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.status-icon.success {
+    background-color: var(--success-bg);
+}
+
+.status-icon.success i {
+    font-size: 32px;
+    color: var(--success-text);
+}
+
+.status-icon.danger {
+    background-color: var(--alert-bg);
+}
+
+.status-icon.danger i {
+    font-size: 32px;
+    color: var(--alert-text);
+}
+
+.status-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.status-message {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Swal customization */
+.swal2-popup {
+    border-radius: 16px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.swal2-title {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 700 !important;
+}
+
+.swal2-html-container {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Spinner */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+/* Responsive Styles - DIPERBARUI */
+@media (max-width: 480px) {
+    .main-container {
+        padding: 15px;
+    }
+    
+    .main-card {
+        padding: 20px;
+    }
+    
+    .qr-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .qr-info {
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+    }
+    
+    .qr-container {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .amount-value {
+        font-size: 24px;
+    }
+    
+    .modal-content {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+    }
+    
+    .modal-qr {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .main-card {
+        padding: 15px;
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .qr-code {
+        max-width: 100%;
+        padding: 6px;
+    }
+    
+    .modal-content {
+        padding: 15px;
+    }
+    
+    .modal-qr {
+        padding: 6px;
+    }
+    
+    .brand-title {
+        font-size: 18px;
+    }
+}
