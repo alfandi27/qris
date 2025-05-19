@@ -1,34 +1,4 @@
- const qrContainer = document.getElementById('qrcodeContainer');
-    const qrModal = document.getElementById('qrModal');
-    const modalContent = document.getElementById('modalContent');
-    const closeModal = document.getElementById('closeModal');
 
- qrModal.addEventListener('click', function(e) {
-        if (e.target === qrModal) {
-            closeModalFunction();
-        }
-    });
-
-qrContainer.addEventListener('click', function() {
-        qrModal.style.display = 'flex';
-        setTimeout(() => {
-            modalContent.style.transform = 'scale(1)';
-            modalContent.style.opacity = '1';
-        }, 10);
-        document.body.style.overflow = 'hidden';
-    });
-
-    function closeModalFunction() {
-        modalContent.style.transform = 'scale(0.95)';
-        modalContent.style.opacity = '0';
-        
-        setTimeout(() => {
-            qrModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 300);
-    }
-
- closeModal.addEventListener('click', closeModalFunction);
 
 // Countdown function
     function startCountdown(expiredDate) {
