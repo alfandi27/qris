@@ -17,18 +17,6 @@ qrContainer.addEventListener('click', function() {
         }, 300);
     }
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
 // Countdown function
     function startCountdown(expiredDate) {
         const countDownDate = new Date(expiredDate).getTime();        
