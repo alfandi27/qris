@@ -22,6 +22,8 @@ qrContainer.addEventListener('click', function() {
         }, 300);
     }
 
+ closeModal.addEventListener('click', closeModalFunction);
+
 // Countdown function
     function startCountdown(expiredDate) {
         const countDownDate = new Date(expiredDate).getTime();        
