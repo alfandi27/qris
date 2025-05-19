@@ -1,3 +1,8 @@
+ const qrContainer = document.getElementById('qrcodeContainer');
+    const qrModal = document.getElementById('qrModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+
 qrContainer.addEventListener('click', function() {
         qrModal.style.display = 'flex';
         setTimeout(() => {
