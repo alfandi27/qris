@@ -1,3 +1,12 @@
+function closeModalFunction() {
+        modalContent.style.transform = 'scale(0.95)';
+        modalContent.style.opacity = '0';
+        
+        setTimeout(() => {
+            qrModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
 
 function debounce(func, wait) {
     let timeout;
