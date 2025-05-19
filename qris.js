@@ -7,6 +7,7 @@ function closeModalFunction() {
             document.body.style.overflow = 'auto';
         }, 300);
     }
+ closeModal.addEventListener('click', closeModalFunction);
 
 function debounce(func, wait) {
     let timeout;
