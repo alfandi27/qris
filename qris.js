@@ -3,6 +3,12 @@
     const modalContent = document.getElementById('modalContent');
     const closeModal = document.getElementById('closeModal');
 
+ qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeModalFunction();
+        }
+    });
+
 qrContainer.addEventListener('click', function() {
         qrModal.style.display = 'flex';
         setTimeout(() => {
