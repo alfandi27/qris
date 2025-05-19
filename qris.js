@@ -1,4 +1,22 @@
- 
+qrContainer.addEventListener('click', function() {
+        qrModal.style.display = 'flex';
+        setTimeout(() => {
+            modalContent.style.transform = 'scale(1)';
+            modalContent.style.opacity = '1';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closeModalFunction() {
+        modalContent.style.transform = 'scale(0.95)';
+        modalContent.style.opacity = '0';
+        
+        setTimeout(() => {
+            qrModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
 // Countdown function
     function startCountdown(expiredDate) {
         const countDownDate = new Date(expiredDate).getTime();        
