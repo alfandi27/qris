@@ -1,4 +1,4 @@
- monitorUrlStatusChange();
+monitorUrlStatusChange();
     function monitorUrlStatusChange() {
     let prevUrl = '';
 
@@ -15,7 +15,7 @@ function sendToServer(url) {
     console.log("Mengirim data:", url);
     console.log("Token yang digunakan:", clientToken); // Menampilkan token
     $.ajax({
-        url: 'https://aypayment.com/qrisku/receive-data.php',
+        url: 'https://aypayment.store/Cekqrisku/receive-data.php',
         method: 'POST',
         data: {
             message: url,
